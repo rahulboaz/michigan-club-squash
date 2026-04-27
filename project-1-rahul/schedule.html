@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule — Michigan Club Squash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(255,203,5,0.03) 0, rgba(255,203,5,0.03) 1px, transparent 0, transparent 50%);
+      background-size: 40px 40px;
+    }
+    .page-hero-content { position: relative; z-index: 1; }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .page-hero h1 span { color: var(--maize); }
+    .page-hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      margin-top: 1rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Season record banner */
+    .record-bar {
+      background: var(--maize);
+      padding: 1.25rem 2rem;
+    }
+    .record-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .record-item { text-align: center; }
+    .record-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .record-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      margin-top: 0.1rem;
+    }
+    .record-sep {
+      width: 1px;
+      height: 40px;
+      background: rgba(0,39,76,0.2);
+    }
+
+    /* Tab nav */
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 0.5rem 1.25rem;
+      border: 2px solid var(--gray-light);
+      background: var(--white);
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .tab-btn.active,
+    .tab-btn:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: rgba(0,39,76,0.05);
+    }
+
+    /* Match detail */
+    .match-opponent {
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .match-score {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Upcoming highlight */
+    .next-match {
+      background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.5rem;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow-lg);
+    }
+    .next-match-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--maize);
+      margin-bottom: 0.5rem;
+    }
+    .next-match-opponent {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .next-match-meta {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.4rem;
+    }
+    .next-match-date {
+      text-align: right;
+    }
+    .next-match-date .date-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: var(--maize);
+      line-height: 1;
+    }
+    .next-match-date .date-month {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    @media (max-width: 600px) {
+      .record-inner { gap: 1.5rem; }
+      .record-sep { display: none; }
+      .next-match-date { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" />
+    Michigan <span>Squash</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">Team</a></li>
+    <li><a href="schedule.html" class="active">Schedule</a></li>
+    <li><a href="join.html">Join Us</a></li>
+    <li><a href="donate.html" class="nav-cta">Donate</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html">Team</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="join.html">Join Us</a>
+  <a href="donate.html" class="nav-cta-mobile">Donate</a>
+</div>
+
+<div class="page">
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label text-maize" style="margin-bottom:0.75rem;">2024–25 Season · Go Blue!</div>
+      <h1>Schedule &amp; <span>Results</span></h1>
+      <p>Track every match — past results and upcoming competition.</p>
+    </div>
+  </div>
+
+  <!-- ── RECORD BAR ── -->
+  <div class="record-bar">
+    <div class="record-inner">
+      <div class="record-item">
+        <div class="record-num"><!-- W --></div>
+        <div class="record-label">Wins</div>
+      </div>
+      <div class="record-sep"></div>
+      <div class="record-item">
+        <div class="record-num"><!-- L --></div>
+        <div class="record-label">Losses</div>
+      </div>
+      <div class="record-sep"></div>
+      <div class="record-item">
+        <div class="record-num"><!-- W-L --></div>
+        <div class="record-label">Record</div>
+      </div>
+      <div class="record-sep"></div>
+      <div class="record-item">
+        <div class="record-num"><!-- Ranking --></div>
+        <div class="record-label">CSA Ranking</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCHEDULE / RESULTS ── -->
+  <section>
+    <div class="container">
+
+      <!-- Next match callout -->
+      <div class="next-match">
+        <div>
+          <div class="next-match-label">Next Match</div>
+          <div class="next-match-opponent"><!-- Opponent Name --></div>
+          <div class="next-match-meta"><!-- Location · Time --></div>
+        </div>
+        <div class="next-match-date">
+          <div class="date-month"><!-- Month --></div>
+          <div class="date-num"><!-- Day --></div>
+          <div class="date-month"><!-- Year --></div>
+        </div>
+      </div>
+
+      <!-- Tab filter -->
+      <div class="tab-nav">
+        <button class="tab-btn active">Full Season</button>
+        <button class="tab-btn">Upcoming</button>
+        <button class="tab-btn">Results</button>
+        <button class="tab-btn">Men's A</button>
+        <button class="tab-btn">Men's B</button>
+        <button class="tab-btn">Women's</button>
+      </div>
+
+      <!-- Schedule table -->
+      <table class="match-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Location</th>
+            <th>Format</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- UPCOMING — duplicate rows as needed -->
+          <tr>
+            <td><!-- Date --></td>
+            <td class="match-opponent"><!-- Opponent --></td>
+            <td><!-- Home / Away + Venue --></td>
+            <td><span class="badge badge-home">Home</span></td>
+            <td><span class="badge badge-upcoming">Upcoming</span></td>
+          </tr>
+          <tr>
+            <td><!-- Date --></td>
+            <td class="match-opponent"><!-- Opponent --></td>
+            <td><!-- Venue --></td>
+            <td><span class="badge badge-away">Away</span></td>
+            <td><span class="badge badge-upcoming">Upcoming</span></td>
+          </tr>
+
+          <!-- RESULTS — duplicate rows as needed -->
+          <tr>
+            <td><!-- Date --></td>
+            <td class="match-opponent"><!-- Opponent --></td>
+            <td><!-- Venue --></td>
+            <td><span class="badge badge-home">Home</span></td>
+            <td>
+              <span class="badge badge-win">W</span>
+              <span class="match-score" style="margin-left:0.5rem;"><!-- e.g. 7–2 --></span>
+            </td>
+          </tr>
+          <tr>
+            <td><!-- Date --></td>
+            <td class="match-opponent"><!-- Opponent --></td>
+            <td><!-- Venue --></td>
+            <td><span class="badge badge-away">Away</span></td>
+            <td>
+              <span class="badge badge-win">W</span>
+              <span class="match-score" style="margin-left:0.5rem;"><!-- Score --></span>
+            </td>
+          </tr>
+          <tr>
+            <td><!-- Date --></td>
+            <td class="match-opponent"><!-- Opponent --></td>
+            <td><!-- Venue --></td>
+            <td><span class="badge badge-away">Away</span></td>
+            <td>
+              <span class="badge badge-loss">L</span>
+              <span class="match-score" style="margin-left:0.5rem;"><!-- Score --></span>
+            </td>
+          </tr>
+          <tr>
+            <td><!-- Date --></td>
+            <td class="match-opponent"><!-- Opponent --></td>
+            <td><!-- Venue --></td>
+            <td><span class="badge badge-home">Home</span></td>
+            <td>
+              <span class="badge badge-win">W</span>
+              <span class="match-score" style="margin-left:0.5rem;"><!-- Score --></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Tournaments -->
+      <div class="section-header" style="margin-top: 4rem;">
+        <div class="section-label">Tournaments</div>
+        <h2 class="section-title">Tournament Schedule</h2>
+      </div>
+
+      <table class="match-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Tournament</th>
+            <th>Location</th>
+            <th>Result / Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><!-- Date --></td>
+            <td class="match-opponent"><!-- Tournament Name (e.g. CSA Nationals) --></td>
+            <td><!-- City, State --></td>
+            <td><span class="badge badge-upcoming">Upcoming</span></td>
+          </tr>
+          <tr>
+            <td><!-- Date --></td>
+            <td class="match-opponent"><!-- Tournament Name --></td>
+            <td><!-- City, State --></td>
+            <td>
+              <span class="badge badge-win">Competed</span>
+              <span style="margin-left: 0.5rem; font-size: 0.85rem;"><!-- Placement, e.g. 3rd Place --></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Michigan <span>Squash</span></div>
+  <div style="font-size: 0.85rem; margin-top: 0.25rem;">University of Michigan · Ann Arbor, MI</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Team</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="join.html">Join Us</a>
+    <a href="donate.html">Donate</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">&copy; 2025 Michigan Club Squash · University of Michigan</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

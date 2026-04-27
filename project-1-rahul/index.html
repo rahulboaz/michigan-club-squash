@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michigan Club Squash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Page-specific ── */
+    .features { background: var(--off-white); }
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .feature-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .feature-icon svg { width: 26px; height: 26px; fill: var(--maize); }
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+    .feature-card p { font-size: 0.92rem; color: var(--gray); line-height: 1.7; }
+
+    /* Marquee */
+    .marquee-section {
+      background: var(--maize);
+      padding: 1rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 22s linear infinite;
+      gap: 3rem;
+    }
+    .marquee-track span {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding-right: 3rem;
+    }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* CTA section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(255,203,5,0.03) 0, rgba(255,203,5,0.03) 1px, transparent 0, transparent 50%);
+      background-size: 40px 40px;
+    }
+    .cta-section .container { position: relative; z-index: 1; }
+    .cta-section .section-title { color: var(--white); }
+
+    /* News/highlights */
+    .highlight-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: rgba(255,203,5,0.3);
+      letter-spacing: 0.1em;
+      overflow: hidden;
+    }
+    .highlight-img img { width: 100%; height: 100%; object-fit: cover; }
+    .highlight-date {
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .highlight-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--blue);
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .highlight-excerpt { font-size: 0.88rem; color: var(--gray); }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.75rem;
+      transition: var(--transition);
+    }
+    .read-more:hover { color: var(--maize); gap: 0.6rem; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" />
+    Michigan <span>Squash</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">Team</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="join.html">Join Us</a></li>
+    <li><a href="donate.html" class="nav-cta">Donate</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html">Team</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="join.html">Join Us</a>
+  <a href="donate.html" class="nav-cta-mobile">Donate</a>
+</div>
+
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-accent-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+        University of Michigan · Ann Arbor · Go Blue!
+      </div>
+
+      <h1 class="hero-title">
+        Michigan
+        <span class="highlight">Club Squash</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Competing at the highest level of collegiate club squash.
+        Building champions on and off the court.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="join.html" class="btn btn-primary">Join the Team</a>
+        <a href="schedule.html" class="btn btn-outline">View Schedule</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num"><!-- STAT -->XX</div>
+        <div class="label">Active Members</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="num">2018</div>
+        <div class="label">Founded</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="num"><!-- STAT -->XX</div>
+        <div class="label">Matches This Season</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="num"><!-- STAT -->#X</div>
+        <div class="label">National Ranking</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ── -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span>Go Blue</span>
+      <span>Michigan Club Squash</span>
+      <span>Compete. Improve. Dominate.</span>
+      <span>Ann Arbor, Michigan</span>
+      <span>Go Blue</span>
+      <span>Michigan Club Squash</span>
+      <span>Compete. Improve. Dominate.</span>
+      <span>Ann Arbor, Michigan</span>
+      <span>Go Blue</span>
+      <span>Michigan Club Squash</span>
+      <span>Compete. Improve. Dominate.</span>
+      <span>Ann Arbor, Michigan</span>
+      <span>Go Blue</span>
+      <span>Michigan Club Squash</span>
+      <span>Compete. Improve. Dominate.</span>
+      <span>Ann Arbor, Michigan</span>
+    </div>
+  </div>
+
+  <!-- ── ABOUT / FEATURES ── -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">More Than a Club.<br>A Competitive Program.</h2>
+        <p class="section-subtitle">
+          Michigan Club Squash competes nationally, trains seriously,
+          and builds a tight-knit community for players of all skill levels.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+          </div>
+          <h3>National Competition</h3>
+          <p>We compete in the College Squash Association (CSA) against top programs across the country, including regional and national championships.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3>All Skill Levels</h3>
+          <p>From beginners picking up a racket for the first time to seasoned players, Michigan Squash has a place for everyone. Come for the sport, stay for the team.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          </div>
+          <h3>Elite Coaching</h3>
+          <p>Train under experienced coaches who push you to compete at the highest level while developing your fundamentals, strategy, and mental game.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HIGHLIGHTS ── -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Latest</div>
+        <h2 class="section-title">News &amp; Highlights</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="highlight-img"><!-- REPLACE: add match photo --></div>
+          <div class="card-body">
+            <div class="highlight-date"><!-- DATE: e.g. April 5, 2025 --></div>
+            <div class="highlight-title"><!-- TITLE: e.g. Michigan Advances at CSA Nationals --></div>
+            <div class="highlight-excerpt"><!-- EXCERPT: 1-2 sentences about the highlight. --></div>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="highlight-img"><!-- REPLACE: add match photo --></div>
+          <div class="card-body">
+            <div class="highlight-date"><!-- DATE --></div>
+            <div class="highlight-title"><!-- TITLE --></div>
+            <div class="highlight-excerpt"><!-- EXCERPT --></div>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="highlight-img"><!-- REPLACE: add match photo --></div>
+          <div class="card-body">
+            <div class="highlight-date"><!-- DATE --></div>
+            <div class="highlight-title"><!-- TITLE --></div>
+            <div class="highlight-excerpt"><!-- EXCERPT --></div>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <div class="container" style="max-width: 700px; text-align: center;">
+      <div class="section-label text-maize">Ready to Compete?</div>
+      <h2 class="section-title white" style="margin-bottom: 1rem;">Join Michigan Club Squash</h2>
+      <p class="section-subtitle white" style="margin: 0 auto 2.5rem;">
+        Whether you're an experienced player or new to the sport, we'd love to have you on the team.
+        Tryouts are held each semester.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="join.html" class="btn btn-primary">Apply Now</a>
+        <a href="donate.html" class="btn btn-outline">Support the Team</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end .page -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Michigan <span>Squash</span></div>
+  <div style="font-size: 0.85rem; margin-top: 0.25rem;">University of Michigan · Ann Arbor, MI</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Team</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="join.html">Join Us</a>
+    <a href="donate.html">Donate</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">&copy; 2025 Michigan Club Squash · University of Michigan</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
