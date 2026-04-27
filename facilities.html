@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facilities — Michigan Club Squash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(255,203,5,0.03) 0, rgba(255,203,5,0.03) 1px, transparent 0, transparent 50%);
+      background-size: 40px 40px;
+    }
+    .page-hero-content { position: relative; z-index: 1; }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .page-hero h1 span { color: var(--maize); }
+    .page-hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      margin-top: 1rem;
+      max-width: 500px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* Facility hero card */
+    .facility-hero {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 3rem;
+    }
+    .facility-hero-img {
+      width: 100%;
+      height: 380px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: rgba(255,203,5,0.25);
+      letter-spacing: 0.1em;
+      overflow: hidden;
+    }
+    .facility-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+    .facility-hero-body {
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .facility-name {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .facility-desc { font-size: 0.95rem; color: var(--gray); line-height: 1.7; }
+
+    .facility-details {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--gray-light);
+      font-size: 0.88rem;
+    }
+    .detail-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .detail-label {
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.72rem;
+      min-width: 80px;
+      padding-top: 0.1rem;
+    }
+    .detail-value { color: var(--gray); line-height: 1.5; }
+
+    /* Court feature cards */
+    .court-feature {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--maize);
+    }
+    .court-feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .court-feature-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .court-feature-icon svg { width: 24px; height: 24px; fill: var(--maize); }
+    .court-feature h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+    .court-feature p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+    /* Photo grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .photo-cell {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: rgba(255,203,5,0.25);
+      letter-spacing: 0.1em;
+    }
+    .photo-cell img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-cell.tall { grid-row: span 2; aspect-ratio: unset; }
+
+    /* Map / directions */
+    .directions-card {
+      background: var(--blue);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .directions-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .directions-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .directions-list li {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      display: flex; gap: 0.6rem; align-items: flex-start;
+    }
+    .directions-list li::before {
+      content: '→';
+      color: var(--maize);
+      flex-shrink: 0;
+    }
+    .map-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+      border: 1px dashed rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .facility-hero-body { grid-template-columns: 1fr; }
+      .directions-card { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-cell.tall { grid-row: span 1; aspect-ratio: 4/3; }
+    }
+    @media (max-width: 480px) {
+      .photo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-m',textContent:'M'}))" />
+    Michigan <span>Squash</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">Team</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="facilities.html" class="active">Facilities</a></li>
+    <li><a href="join.html">Join Us</a></li>
+    <li><a href="donate.html" class="nav-cta">Donate</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html">Team</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="history.html">History</a>
+  <a href="facilities.html">Facilities</a>
+  <a href="join.html">Join Us</a>
+  <a href="donate.html" class="nav-cta-mobile">Donate</a>
+</div>
+
+<div class="page">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label text-maize" style="margin-bottom:0.75rem;">Where We Train · Go Blue!</div>
+      <h1>Our <span>Facilities</span></h1>
+      <p>World-class courts at the University of Michigan — built for serious competition.</p>
+    </div>
+  </div>
+
+  <!-- ── MAIN FACILITY ── -->
+  <section>
+    <div class="container">
+
+      <div class="facility-hero">
+        <div class="facility-hero-img">
+          <!-- <img src="photos/courts.jpg" alt="Squash Courts" /> -->
+          COURTS
+        </div>
+        <div class="facility-hero-body">
+          <div>
+            <div class="section-label">Primary Venue</div>
+            <div class="facility-name"><!-- Facility Name<br>e.g. Varsity Tennis &amp; Squash Center --></div>
+            <p class="facility-desc"><!-- Description of the facility. e.g. "Home to X regulation singles courts, the [Facility] is one of the premier squash facilities in the Big Ten. Built in [year], our courts feature..." --></p>
+          </div>
+          <div class="facility-details">
+            <div class="detail-row">
+              <div class="detail-label">Address</div>
+              <div class="detail-value"><!-- Full address --></div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">Courts</div>
+              <div class="detail-value"><!-- e.g. 6 singles courts --></div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">Surface</div>
+              <div class="detail-value"><!-- e.g. Hardwood / Plaster --></div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">Practice</div>
+              <div class="detail-value"><!-- e.g. Mon/Wed/Fri 6–8pm --></div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">Parking</div>
+              <div class="detail-value"><!-- Parking info --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Court features -->
+      <div class="section-header center">
+        <div class="section-label">Amenities</div>
+        <h2 class="section-title">What We Have</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="court-feature">
+          <div class="court-feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+          </div>
+          <h3>Regulation Courts</h3>
+          <p><!-- e.g. X full-size singles courts meeting WSF specifications for competition play. --></p>
+        </div>
+
+        <div class="court-feature">
+          <div class="court-feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.53 16.5 1 14.67 1c-1.16 0-2.15.58-2.77 1.45-.04.06-.08.13-.12.19-.04-.06-.08-.13-.12-.19C11.02 1.58 10.03 1 8.87 1 7.03 1 5.53 2.53 5.53 4.67c0 .46.11.9.18 1.33H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg>
+          </div>
+          <h3>Locker Rooms</h3>
+          <p><!-- e.g. Full locker room facilities with showers available to Michigan Club Squash members. --></p>
+        </div>
+
+        <div class="court-feature">
+          <div class="court-feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          </div>
+          <h3>Equipment Storage</h3>
+          <p><!-- e.g. Dedicated storage space for club equipment including rackets, balls, and training aids. --></p>
+        </div>
+      </div>
+
+      <!-- Photo gallery -->
+      <div class="section-header" style="margin-top: 4rem;">
+        <div class="section-label">Gallery</div>
+        <h2 class="section-title">Photos</h2>
+      </div>
+
+      <div class="photo-grid">
+        <div class="photo-cell tall"><!-- <img src="photos/court1.jpg" alt="Court" /> -->PHOTO</div>
+        <div class="photo-cell"><!-- <img src="photos/court2.jpg" alt="Court" /> -->PHOTO</div>
+        <div class="photo-cell"><!-- <img src="photos/court3.jpg" alt="Court" /> -->PHOTO</div>
+        <div class="photo-cell"><!-- <img src="photos/facility.jpg" alt="Facility" /> -->PHOTO</div>
+        <div class="photo-cell"><!-- <img src="photos/practice.jpg" alt="Practice" /> -->PHOTO</div>
+      </div>
+      <!-- Replace PHOTO placeholders with <img> tags pointing to your photos -->
+
+    </div>
+  </section>
+
+  <!-- ── DIRECTIONS ── -->
+  <section style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-label">Getting Here</div>
+        <h2 class="section-title">Directions</h2>
+      </div>
+
+      <div class="directions-card">
+        <div>
+          <h3>How to Find Us</h3>
+          <ul class="directions-list">
+            <li><!-- Direction 1 e.g. "From Central Campus, head north on State St." --></li>
+            <li><!-- Direction 2 --></li>
+            <li><!-- Direction 3 --></li>
+            <li><!-- Parking info e.g. "Free parking available in Lot X after 5pm" --></li>
+          </ul>
+          <div style="margin-top: 1.5rem;">
+            <a href="<!-- Google Maps link -->" target="_blank" class="btn btn-primary">Open in Google Maps</a>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <!-- Replace with Google Maps embed:
+          <iframe src="https://www.google.com/maps/embed?..." width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+          -->
+          Add Google Maps embed here
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Michigan <span>Squash</span></div>
+  <div style="font-size: 0.85rem; margin-top: 0.25rem;">University of Michigan · Ann Arbor, MI</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Team</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="history.html">History</a>
+    <a href="facilities.html">Facilities</a>
+    <a href="join.html">Join Us</a>
+    <a href="donate.html">Donate</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">&copy; 2025 Michigan Club Squash · University of Michigan</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

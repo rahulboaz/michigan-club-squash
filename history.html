@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History — Michigan Club Squash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(255,203,5,0.03) 0, rgba(255,203,5,0.03) 1px, transparent 0, transparent 50%);
+      background-size: 40px 40px;
+    }
+    .page-hero-content { position: relative; z-index: 1; }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .page-hero h1 span { color: var(--maize); }
+    .page-hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      margin-top: 1rem;
+      max-width: 500px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* Timeline */
+    .timeline { position: relative; padding: 2rem 0; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--gray-light);
+      transform: translateX(-50%);
+    }
+
+    .season-block {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0;
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+
+    .season-block:nth-child(even) .season-card { order: 3; }
+    .season-block:nth-child(even) .season-empty { order: 1; }
+
+    .season-dot-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1.5rem;
+    }
+    .season-dot {
+      width: 44px; height: 44px;
+      background: var(--blue);
+      border: 3px solid var(--maize);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--maize);
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .season-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+      margin: 0 1.5rem;
+    }
+    .season-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+    .season-header {
+      background: var(--blue);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .season-year {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--maize);
+      letter-spacing: 0.05em;
+    }
+    .season-record {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.06em;
+    }
+
+    .season-body { padding: 1.25rem 1.5rem; }
+
+    .season-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .season-highlights li {
+      font-size: 0.88rem;
+      color: var(--blue);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      line-height: 1.5;
+    }
+    .season-highlights li::before {
+      content: '▸';
+      color: var(--maize);
+      font-size: 0.7rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .season-stat-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--gray-light);
+      flex-wrap: wrap;
+    }
+    .season-stat { text-align: center; flex: 1; min-width: 60px; }
+    .season-stat .s-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .season-stat .s-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 0.1rem;
+    }
+
+    .season-empty { /* placeholder side */ }
+
+    /* Founding banner */
+    .founding-banner {
+      background: var(--maize);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .founding-banner h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+    }
+    .founding-banner p { color: var(--blue-mid); margin-top: 0.5rem; font-size: 0.95rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 768px) {
+      .timeline::before { left: 22px; }
+      .season-block { grid-template-columns: 44px 1fr; }
+      .season-block:nth-child(even) .season-card { order: unset; }
+      .season-block:nth-child(even) .season-empty { display: none; }
+      .season-empty { display: none; }
+      .season-dot-col { padding-top: 1.5rem; }
+      .season-card { margin: 0 0 0 1rem; }
+      .season-dot-col { grid-column: 1; }
+      .season-card { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-m',textContent:'M'}))" />
+    Michigan <span>Squash</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">Team</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="history.html" class="active">History</a></li>
+    <li><a href="facilities.html">Facilities</a></li>
+    <li><a href="join.html">Join Us</a></li>
+    <li><a href="donate.html" class="nav-cta">Donate</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html">Team</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="history.html">History</a>
+  <a href="facilities.html">Facilities</a>
+  <a href="join.html">Join Us</a>
+  <a href="donate.html" class="nav-cta-mobile">Donate</a>
+</div>
+
+<div class="page">
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label text-maize" style="margin-bottom:0.75rem;">Est. 2018 · Go Blue!</div>
+      <h1>Our <span>History</span></h1>
+      <p>Seven seasons of growth, competition, and Michigan pride on the squash court.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="founding-banner">
+        <h2>Founded in 2018</h2>
+        <p>Michigan Club Squash was founded by a group of passionate players at the University of Michigan. What started as a small group has grown into a competitive program competing nationally in the College Squash Association.</p>
+      </div>
+
+      <div class="timeline">
+
+        <!-- 2025–2026 -->
+        <div class="season-block">
+          <div class="season-card">
+            <div class="season-header">
+              <div class="season-year">2025–2026</div>
+              <div class="season-record"><!-- W–L --></div>
+            </div>
+            <div class="season-body">
+              <ul class="season-highlights">
+                <li><!-- Key highlight or milestone --></li>
+                <li><!-- Tournament result --></li>
+                <li><!-- Notable match or achievement --></li>
+              </ul>
+              <div class="season-stat-row">
+                <div class="season-stat"><div class="s-num"><!-- W --></div><div class="s-label">Wins</div></div>
+                <div class="season-stat"><div class="s-num"><!-- L --></div><div class="s-label">Losses</div></div>
+                <div class="season-stat"><div class="s-num"><!-- # --></div><div class="s-label">CSA Rank</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="season-dot-col"><div class="season-dot">25–26</div></div>
+          <div class="season-empty"></div>
+        </div>
+
+        <!-- 2024–2025 -->
+        <div class="season-block">
+          <div class="season-empty"></div>
+          <div class="season-dot-col"><div class="season-dot">24–25</div></div>
+          <div class="season-card">
+            <div class="season-header">
+              <div class="season-year">2024–2025</div>
+              <div class="season-record"><!-- W–L --></div>
+            </div>
+            <div class="season-body">
+              <ul class="season-highlights">
+                <li><!-- Key highlight --></li>
+                <li><!-- Tournament result --></li>
+                <li><!-- Notable achievement --></li>
+              </ul>
+              <div class="season-stat-row">
+                <div class="season-stat"><div class="s-num"><!-- W --></div><div class="s-label">Wins</div></div>
+                <div class="season-stat"><div class="s-num"><!-- L --></div><div class="s-label">Losses</div></div>
+                <div class="season-stat"><div class="s-num"><!-- # --></div><div class="s-label">CSA Rank</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2023–2024 -->
+        <div class="season-block">
+          <div class="season-card">
+            <div class="season-header">
+              <div class="season-year">2023–2024</div>
+              <div class="season-record"><!-- W–L --></div>
+            </div>
+            <div class="season-body">
+              <ul class="season-highlights">
+                <li><!-- Key highlight --></li>
+                <li><!-- Tournament result --></li>
+                <li><!-- Notable achievement --></li>
+              </ul>
+              <div class="season-stat-row">
+                <div class="season-stat"><div class="s-num"><!-- W --></div><div class="s-label">Wins</div></div>
+                <div class="season-stat"><div class="s-num"><!-- L --></div><div class="s-label">Losses</div></div>
+                <div class="season-stat"><div class="s-num"><!-- # --></div><div class="s-label">CSA Rank</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="season-dot-col"><div class="season-dot">23–24</div></div>
+          <div class="season-empty"></div>
+        </div>
+
+        <!-- 2022–2023 -->
+        <div class="season-block">
+          <div class="season-empty"></div>
+          <div class="season-dot-col"><div class="season-dot">22–23</div></div>
+          <div class="season-card">
+            <div class="season-header">
+              <div class="season-year">2022–2023</div>
+              <div class="season-record"><!-- W–L --></div>
+            </div>
+            <div class="season-body">
+              <ul class="season-highlights">
+                <li><!-- Key highlight --></li>
+                <li><!-- Tournament result --></li>
+                <li><!-- Notable achievement --></li>
+              </ul>
+              <div class="season-stat-row">
+                <div class="season-stat"><div class="s-num"><!-- W --></div><div class="s-label">Wins</div></div>
+                <div class="season-stat"><div class="s-num"><!-- L --></div><div class="s-label">Losses</div></div>
+                <div class="season-stat"><div class="s-num"><!-- # --></div><div class="s-label">CSA Rank</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2021–2022 -->
+        <div class="season-block">
+          <div class="season-card">
+            <div class="season-header">
+              <div class="season-year">2021–2022</div>
+              <div class="season-record"><!-- W–L --></div>
+            </div>
+            <div class="season-body">
+              <ul class="season-highlights">
+                <li><!-- Key highlight --></li>
+                <li><!-- Notable achievement --></li>
+              </ul>
+              <div class="season-stat-row">
+                <div class="season-stat"><div class="s-num"><!-- W --></div><div class="s-label">Wins</div></div>
+                <div class="season-stat"><div class="s-num"><!-- L --></div><div class="s-label">Losses</div></div>
+                <div class="season-stat"><div class="s-num"><!-- # --></div><div class="s-label">CSA Rank</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="season-dot-col"><div class="season-dot">21–22</div></div>
+          <div class="season-empty"></div>
+        </div>
+
+        <!-- 2020–2021 -->
+        <div class="season-block">
+          <div class="season-empty"></div>
+          <div class="season-dot-col"><div class="season-dot">20–21</div></div>
+          <div class="season-card">
+            <div class="season-header">
+              <div class="season-year">2020–2021</div>
+              <div class="season-record">COVID-19 Season</div>
+            </div>
+            <div class="season-body">
+              <ul class="season-highlights">
+                <li>Season significantly impacted by the COVID-19 pandemic.</li>
+                <li><!-- Any virtual/limited activity highlights --></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2019–2020 -->
+        <div class="season-block">
+          <div class="season-card">
+            <div class="season-header">
+              <div class="season-year">2019–2020</div>
+              <div class="season-record"><!-- W–L --></div>
+            </div>
+            <div class="season-body">
+              <ul class="season-highlights">
+                <li><!-- Key highlight --></li>
+                <li>Season concluded early due to COVID-19 pandemic.</li>
+              </ul>
+              <div class="season-stat-row">
+                <div class="season-stat"><div class="s-num"><!-- W --></div><div class="s-label">Wins</div></div>
+                <div class="season-stat"><div class="s-num"><!-- L --></div><div class="s-label">Losses</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="season-dot-col"><div class="season-dot">19–20</div></div>
+          <div class="season-empty"></div>
+        </div>
+
+        <!-- 2018–2019 (Founding Season) -->
+        <div class="season-block">
+          <div class="season-empty"></div>
+          <div class="season-dot-col"><div class="season-dot">18–19</div></div>
+          <div class="season-card">
+            <div class="season-header">
+              <div class="season-year">2018–2019</div>
+              <div class="season-record">Founding Season</div>
+            </div>
+            <div class="season-body">
+              <ul class="season-highlights">
+                <li>Michigan Club Squash founded by student players at the University of Michigan.</li>
+                <li><!-- First matches, first milestones --></li>
+                <li><!-- Founding members / first officers --></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Michigan <span>Squash</span></div>
+  <div style="font-size: 0.85rem; margin-top: 0.25rem;">University of Michigan · Ann Arbor, MI</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Team</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="history.html">History</a>
+    <a href="facilities.html">Facilities</a>
+    <a href="join.html">Join Us</a>
+    <a href="donate.html">Donate</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">&copy; 2025 Michigan Club Squash · University of Michigan</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

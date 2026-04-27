@@ -185,13 +185,15 @@
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" />
+    <img src="logo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-m',textContent:'M'}))" />
     Michigan <span>Squash</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html" class="active">Team</a></li>
     <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="facilities.html">Facilities</a></li>
     <li><a href="join.html">Join Us</a></li>
     <li><a href="donate.html" class="nav-cta">Donate</a></li>
   </ul>
@@ -204,6 +206,8 @@
   <a href="index.html">Home</a>
   <a href="about.html">Team</a>
   <a href="schedule.html">Schedule</a>
+  <a href="history.html">History</a>
+  <a href="facilities.html">Facilities</a>
   <a href="join.html">Join Us</a>
   <a href="donate.html" class="nav-cta-mobile">Donate</a>
 </div>
@@ -218,38 +222,6 @@
       <p>The coaches, leaders, and players who make Michigan Club Squash what it is.</p>
     </div>
   </div>
-
-  <!-- ── COACHES ── -->
-  <section>
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Coaching Staff</div>
-        <h2 class="section-title">Our Coaches</h2>
-      </div>
-
-      <div class="grid-2">
-        <!-- COACH 1 — replace with real info -->
-        <div class="coach-card">
-          <div class="coach-avatar"><!-- PHOTO or initials --></div>
-          <div>
-            <div class="coach-title">Head Coach</div>
-            <div class="coach-name"><!-- Coach Name --></div>
-            <div class="coach-bio"><!-- Brief bio: background, experience, philosophy. 2-3 sentences. --></div>
-          </div>
-        </div>
-
-        <!-- COACH 2 — remove if only one coach -->
-        <div class="coach-card">
-          <div class="coach-avatar"><!-- PHOTO or initials --></div>
-          <div>
-            <div class="coach-title">Assistant Coach</div>
-            <div class="coach-name"><!-- Coach Name --></div>
-            <div class="coach-bio"><!-- Brief bio --></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ── LEADERSHIP ── -->
   <section class="leadership-section">
@@ -266,7 +238,6 @@
         <div class="leadership-card">
           <div class="leadership-photo"><!-- PHOTO --></div>
           <div class="leadership-info">
-            <div class="leadership-role">President</div>
             <div class="leadership-name">Rahul Boaz</div>
             <div class="leadership-meta">Class of 2029</div>
             <div class="leadership-bio"><!-- Short bio --></div>

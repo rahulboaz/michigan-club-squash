@@ -174,13 +174,15 @@
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" />
+    <img src="logo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-m',textContent:'M'}))" />
     Michigan <span>Squash</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">Team</a></li>
     <li><a href="schedule.html" class="active">Schedule</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="facilities.html">Facilities</a></li>
     <li><a href="join.html">Join Us</a></li>
     <li><a href="donate.html" class="nav-cta">Donate</a></li>
   </ul>
@@ -193,6 +195,8 @@
   <a href="index.html">Home</a>
   <a href="about.html">Team</a>
   <a href="schedule.html">Schedule</a>
+  <a href="history.html">History</a>
+  <a href="facilities.html">Facilities</a>
   <a href="join.html">Join Us</a>
   <a href="donate.html" class="nav-cta-mobile">Donate</a>
 </div>
@@ -256,9 +260,6 @@
         <button class="tab-btn active">Full Season</button>
         <button class="tab-btn">Upcoming</button>
         <button class="tab-btn">Results</button>
-        <button class="tab-btn">Men's A</button>
-        <button class="tab-btn">Men's B</button>
-        <button class="tab-btn">Women's</button>
       </div>
 
       <!-- Schedule table -->
@@ -273,63 +274,15 @@
           </tr>
         </thead>
         <tbody>
-          <!-- UPCOMING — duplicate rows as needed -->
+          <!-- Add match rows as the season progresses. Example:
           <tr>
-            <td><!-- Date --></td>
-            <td class="match-opponent"><!-- Opponent --></td>
-            <td><!-- Home / Away + Venue --></td>
+            <td>Sept 15, 2025</td>
+            <td class="match-opponent">Northwestern</td>
+            <td>Ann Arbor, MI</td>
             <td><span class="badge badge-home">Home</span></td>
-            <td><span class="badge badge-upcoming">Upcoming</span></td>
+            <td><span class="badge badge-win">W</span> <span class="match-score">7–2</span></td>
           </tr>
-          <tr>
-            <td><!-- Date --></td>
-            <td class="match-opponent"><!-- Opponent --></td>
-            <td><!-- Venue --></td>
-            <td><span class="badge badge-away">Away</span></td>
-            <td><span class="badge badge-upcoming">Upcoming</span></td>
-          </tr>
-
-          <!-- RESULTS — duplicate rows as needed -->
-          <tr>
-            <td><!-- Date --></td>
-            <td class="match-opponent"><!-- Opponent --></td>
-            <td><!-- Venue --></td>
-            <td><span class="badge badge-home">Home</span></td>
-            <td>
-              <span class="badge badge-win">W</span>
-              <span class="match-score" style="margin-left:0.5rem;"><!-- e.g. 7–2 --></span>
-            </td>
-          </tr>
-          <tr>
-            <td><!-- Date --></td>
-            <td class="match-opponent"><!-- Opponent --></td>
-            <td><!-- Venue --></td>
-            <td><span class="badge badge-away">Away</span></td>
-            <td>
-              <span class="badge badge-win">W</span>
-              <span class="match-score" style="margin-left:0.5rem;"><!-- Score --></span>
-            </td>
-          </tr>
-          <tr>
-            <td><!-- Date --></td>
-            <td class="match-opponent"><!-- Opponent --></td>
-            <td><!-- Venue --></td>
-            <td><span class="badge badge-away">Away</span></td>
-            <td>
-              <span class="badge badge-loss">L</span>
-              <span class="match-score" style="margin-left:0.5rem;"><!-- Score --></span>
-            </td>
-          </tr>
-          <tr>
-            <td><!-- Date --></td>
-            <td class="match-opponent"><!-- Opponent --></td>
-            <td><!-- Venue --></td>
-            <td><span class="badge badge-home">Home</span></td>
-            <td>
-              <span class="badge badge-win">W</span>
-              <span class="match-score" style="margin-left:0.5rem;"><!-- Score --></span>
-            </td>
-          </tr>
+          -->
         </tbody>
       </table>
 
