@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advisory Board — Michigan Club Squash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .board-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid var(--maize);
+    }
+    .board-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .board-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+    }
+    .board-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.75rem;
+    }
+    .board-bio {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="photos/michigansquashlogo.png" alt="Michigan Club Squash Logo" class="nav-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-m',textContent:'M'}))" />
+    Michigan <span>Squash</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-dropdown"><a href="about.html" class="active">People</a><div class="nav-dropdown-menu"><a href="about.html">Team</a><a href="advisory-board.html" class="active">Advisory Board</a></div></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="facilities.html">Facilities</a></li>
+    <li><a href="join.html">Join Us</a></li>
+    <li><a href="store.html">Store</a></li>
+    <li><a href="donate.html" class="nav-cta">Donate</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html">People</a>
+  <div class="nav-mobile-sub">
+    <a href="about.html">Team</a>
+    <a href="advisory-board.html" class="active">Advisory Board</a>
+  </div>
+  <a href="schedule.html">Schedule</a>
+  <a href="history.html">History</a>
+  <a href="facilities.html">Facilities</a>
+  <a href="join.html">Join Us</a>
+  <a href="store.html">Store</a>
+  <a href="donate.html" class="nav-cta-mobile">Donate</a>
+</div>
+
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <div style="background:linear-gradient(135deg,var(--dark) 0%,var(--blue) 100%);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,203,5,0.03) 0,rgba(255,203,5,0.03) 1px,transparent 0,transparent 50%);background-size:40px 40px;"></div>
+    <div style="position:relative;z-index:1;">
+      <div class="section-label text-maize" style="margin-bottom:0.75rem;">Michigan Club Squash · Go Blue!</div>
+      <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,7vw,5rem);color:var(--white);letter-spacing:0.04em;line-height:1;">Advisory <span style="color:var(--maize);">Board</span></h1>
+      <p style="color:rgba(255,255,255,0.65);font-size:1.05rem;margin-top:1rem;max-width:540px;margin-left:auto;margin-right:auto;">The experienced leaders and supporters who guide Michigan Club Squash.</p>
+    </div>
+  </div>
+
+  <!-- ── BOARD MEMBERS ── -->
+  <section>
+    <div class="container" style="max-width:960px;">
+      <div class="grid-3">
+
+        <!-- Placeholder cards — replace with real board members -->
+        <div class="board-card">
+          <div class="board-name"><!-- Name --></div>
+          <div class="board-title"><!-- Title / Affiliation --></div>
+          <div class="board-bio"><!-- Bio --></div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name"><!-- Name --></div>
+          <div class="board-title"><!-- Title / Affiliation --></div>
+          <div class="board-bio"><!-- Bio --></div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name"><!-- Name --></div>
+          <div class="board-title"><!-- Title / Affiliation --></div>
+          <div class="board-bio"><!-- Bio --></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Michigan <span>Squash</span></div>
+  <div style="font-size: 0.85rem; margin-top: 0.25rem;">University of Michigan · Ann Arbor, MI</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">Team</a>
+    <a href="advisory-board.html">Advisory Board</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="history.html">History</a>
+    <a href="facilities.html">Facilities</a>
+    <a href="join.html">Join Us</a>
+    <a href="donate.html">Donate</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">&copy; 2025 Michigan Club Squash · University of Michigan</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
