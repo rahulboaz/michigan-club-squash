@@ -175,10 +175,6 @@
       object-fit: cover;
       display: block;
     }
-    @media (max-width: 768px) {
-      .season-photo { display: none; }
-    }
-
     /* Founding banner */
     .founding-banner {
       background: var(--maize);
@@ -196,15 +192,17 @@
     .founding-banner p { color: var(--blue-mid); margin-top: 0.5rem; font-size: 0.95rem; max-width: 600px; margin-left: auto; margin-right: auto; }
 
     @media (max-width: 768px) {
-      .timeline::before { left: 22px; }
-      .season-block { grid-template-columns: 44px 1fr; }
-      .season-block:nth-child(even) .season-card { order: unset; }
-      .season-block:nth-child(even) .season-empty { display: none; }
-      .season-empty { display: none; }
-      .season-dot-col { padding-top: 1.5rem; }
-      .season-card { margin: 0 0 0 1rem; }
-      .season-dot-col { grid-column: 1; }
-      .season-card { grid-column: 2; }
+      /* Dump the complex grid — just stack cards vertically */
+      .timeline::before { display: none; }
+      .season-block {
+        display: block;
+        margin-bottom: 1.5rem;
+      }
+      .season-dot-col { display: none; }
+      .season-photo { display: none; }
+      .season-card { margin: 0; }
+      .founding-banner { padding: 1.5rem; margin-bottom: 2rem; }
+      .founding-banner h2 { font-size: 1.8rem; }
     }
   </style>
 </head>
