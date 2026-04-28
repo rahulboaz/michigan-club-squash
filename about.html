@@ -174,9 +174,13 @@
     }
     .coach-bio { font-size: 0.88rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem; line-height: 1.65; }
 
-    @media (max-width: 600px) {
-      .leadership-card { flex-direction: column; }
-      .leadership-photo { width: 100%; height: 140px; }
+    @media (max-width: 768px) {
+      /* Compact horizontal card: small square photo + text side by side */
+      .leadership-card { flex-direction: row; align-items: stretch; }
+      .leadership-photo { width: 90px; min-width: 90px; height: auto; }
+      .leadership-photo img { object-position: top center; height: 100%; }
+      .leadership-info { padding: 1rem; }
+      .leadership-name { font-size: 1.2rem; }
       .coach-card { flex-direction: column; align-items: center; text-align: center; }
     }
   </style>
