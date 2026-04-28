@@ -12,32 +12,54 @@
     .board-card {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 2rem;
+      padding: 1.75rem;
       box-shadow: var(--shadow);
       transition: var(--transition);
       border-top: 4px solid var(--maize);
     }
-    .board-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .board-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
     .board-name {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--blue);
       letter-spacing: 0.04em;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
-    .board-title {
+    .board-role {
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gray);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.4;
     }
-    .board-bio {
-      font-size: 0.9rem;
-      color: var(--gray);
-      line-height: 1.7;
+    .board-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--gray-light);
     }
+    .board-contact a {
+      font-size: 0.82rem;
+      color: var(--blue);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .board-contact a:hover { color: var(--maize); }
+
+    /* Featured contact cards */
+    .board-card-featured {
+      border-top-color: var(--blue);
+      background: var(--blue);
+    }
+    .board-card-featured .board-name { color: var(--maize); }
+    .board-card-featured .board-role { color: rgba(255,255,255,0.65); }
+    .board-card-featured .board-contact { border-top-color: rgba(255,255,255,0.15); }
+    .board-card-featured .board-contact a { color: rgba(255,255,255,0.85); }
+    .board-card-featured .board-contact a:hover { color: var(--maize); }
   </style>
 </head>
 <body>
@@ -67,7 +89,7 @@
   <a href="about.html">People</a>
   <div class="nav-mobile-sub">
     <a href="about.html">Team</a>
-    <a href="advisory-board.html" class="active">Advisory Board</a>
+    <a href="advisory-board.html">Advisory Board</a>
   </div>
   <a href="schedule.html">Schedule</a>
   <a href="history.html">History</a>
@@ -85,32 +107,94 @@
     <div style="position:relative;z-index:1;">
       <div class="section-label text-maize" style="margin-bottom:0.75rem;">Michigan Club Squash · Go Blue!</div>
       <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,7vw,5rem);color:var(--white);letter-spacing:0.04em;line-height:1;">Advisory <span style="color:var(--maize);">Board</span></h1>
-      <p style="color:rgba(255,255,255,0.65);font-size:1.05rem;margin-top:1rem;max-width:540px;margin-left:auto;margin-right:auto;">The experienced leaders and supporters who guide Michigan Club Squash.</p>
+      <p style="color:rgba(255,255,255,0.65);font-size:1.05rem;margin-top:1rem;max-width:540px;margin-left:auto;margin-right:auto;">The experienced leaders, coaches, and supporters who guide Michigan Club Squash.</p>
     </div>
   </div>
 
-  <!-- ── BOARD MEMBERS ── -->
+  <!-- ── LOCAL CONTACTS (featured) ── -->
   <section>
     <div class="container" style="max-width:960px;">
+      <div class="section-header">
+        <div class="section-label">Local Contacts</div>
+        <h2 class="section-title">On-the-Ground Support</h2>
+      </div>
+      <div class="grid-2" style="margin-bottom:4rem;">
+
+        <div class="board-card board-card-featured">
+          <div class="board-name">Richard Geglio</div>
+          <div class="board-role">Local Ann Arbor Squash Player / Coach</div>
+          <div class="board-contact">
+            <a href="tel:7349298663">(734) 929-8663</a>
+            <a href="mailto:rga@hevanet.com">rga@hevanet.com</a>
+          </div>
+        </div>
+
+        <div class="board-card board-card-featured">
+          <div class="board-name">Dave Walker</div>
+          <div class="board-role">DAC Member · UM Alumni</div>
+          <div class="board-contact">
+            <a href="tel:2487626081">(248) 762-6081</a>
+            <a href="mailto:dcwalk47@gmail.com">dcwalk47@gmail.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── FULL BOARD ── -->
+      <div class="section-header">
+        <div class="section-label">Advisory Board</div>
+        <h2 class="section-title">Board Members</h2>
+      </div>
       <div class="grid-3">
 
-        <!-- Placeholder cards — replace with real board members -->
         <div class="board-card">
-          <div class="board-name"><!-- Name --></div>
-          <div class="board-title"><!-- Title / Affiliation --></div>
-          <div class="board-bio"><!-- Bio --></div>
+          <div class="board-name">Andrew Garver</div>
+          <div class="board-role">Club Founder / Former Player · UM '21</div>
         </div>
 
         <div class="board-card">
-          <div class="board-name"><!-- Name --></div>
-          <div class="board-title"><!-- Title / Affiliation --></div>
-          <div class="board-bio"><!-- Bio --></div>
+          <div class="board-name">Conor Hynes</div>
+          <div class="board-role">Former Player / Team Manager · UM '22</div>
         </div>
 
         <div class="board-card">
-          <div class="board-name"><!-- Name --></div>
-          <div class="board-title"><!-- Title / Affiliation --></div>
-          <div class="board-bio"><!-- Bio --></div>
+          <div class="board-name">Lou Alpert</div>
+          <div class="board-role">Former Player / Team President &amp; Captain · UM '22</div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name">Jeremy Waldman</div>
+          <div class="board-role">Former Player / Coach · UM '22</div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name">Julian Wellings</div>
+          <div class="board-role">Team Head Coach / BAC Squash Pro</div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name">Jonathan Dyke</div>
+          <div class="board-role">Donor / UM Parent</div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name">Michael Beauregard</div>
+          <div class="board-role">BAC Member / Motor City Squash &amp; Education Foundation</div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name">Mick Joint</div>
+          <div class="board-role">DAC Squash Pro</div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name">Jon Geekie</div>
+          <div class="board-role">BAC Squash Pro</div>
+        </div>
+
+        <div class="board-card">
+          <div class="board-name">Jai Shekhawat</div>
+          <div class="board-role">Former UM Parent / Donor</div>
         </div>
 
       </div>
