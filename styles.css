@@ -605,8 +605,9 @@ footer {
   /* Section headers */
   .section-header { margin-bottom: 2rem; }
 
-  /* Leadership cards — hide photo on mobile, text only */
-  .leadership-photo { display: none; }
+  /* Leadership cards — small square avatar on left */
+  .leadership-photo { width: 100px; height: 100px; flex-shrink: 0; }
+  .leadership-photo img { object-position: top center; }
 }
 
 @media (max-width: 480px) {
