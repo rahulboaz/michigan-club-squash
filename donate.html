@@ -8,257 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .page-hero {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%);
-      padding: 5rem 2rem 4rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(45deg, rgba(255,203,5,0.03) 0, rgba(255,203,5,0.03) 1px, transparent 0, transparent 50%);
-      background-size: 40px 40px;
-    }
-    .page-hero-content { position: relative; z-index: 1; }
-    .page-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      color: var(--white);
-      letter-spacing: 0.04em;
-      line-height: 1;
-    }
-    .page-hero h1 span { color: var(--maize); }
-    .page-hero p {
-      color: rgba(255,255,255,0.65);
-      font-size: 1.05rem;
-      margin-top: 1rem;
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Impact stats */
-    .impact-bar {
-      background: var(--maize);
-      padding: 2rem;
-    }
-    .impact-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
-    }
-    .impact-item { text-align: center; }
-    .impact-num {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      color: var(--blue);
-      line-height: 1;
-    }
-    .impact-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--blue-mid);
-      margin-top: 0.2rem;
-    }
-
-    /* Giving tiers */
-    .tier-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      border-top: 4px solid var(--gray-light);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-    .tier-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .tier-card.featured {
-      border-top-color: var(--maize);
-      background: var(--blue);
-      color: var(--white);
-    }
-
-    .tier-amount {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      color: var(--blue);
-      line-height: 1;
-      letter-spacing: 0.02em;
-    }
-    .tier-card.featured .tier-amount { color: var(--maize); }
-
-    .tier-name {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 0.25rem;
-    }
-    .tier-card.featured .tier-name { color: rgba(255,255,255,0.6); }
-
-    .tier-desc {
-      font-size: 0.88rem;
-      color: var(--gray);
-      margin: 1rem 0;
-      line-height: 1.65;
-      flex-grow: 1;
-    }
-    .tier-card.featured .tier-desc { color: rgba(255,255,255,0.7); }
-
-    .tier-perks {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      margin-bottom: 1.5rem;
-    }
-    .tier-perks li {
-      font-size: 0.85rem;
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .tier-card.featured .tier-perks li { color: rgba(255,255,255,0.85); }
-    .tier-perks li::before {
-      content: '✓';
-      color: var(--maize);
-      background: var(--blue);
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .tier-card.featured .tier-perks li::before {
-      background: var(--maize);
-      color: var(--blue);
-    }
-
-    /* Donate form */
-    .donate-layout {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .amount-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-    .amount-btn {
-      padding: 0.85rem;
-      border: 2px solid var(--gray-light);
-      background: var(--white);
-      border-radius: var(--radius);
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      color: var(--blue);
-      letter-spacing: 0.04em;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
-    }
-    .amount-btn:hover,
-    .amount-btn.selected {
-      border-color: var(--blue);
-      background: var(--blue);
-      color: var(--maize);
-    }
-
-    .form-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-lg);
-      position: sticky;
-      top: 88px;
-    }
-
-    .form-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      color: var(--blue);
-      letter-spacing: 0.04em;
-      margin-bottom: 1.5rem;
-    }
-
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    .use-of-funds {
-      background: var(--off-white);
-    }
-    .fund-item {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-    }
-    .fund-pct {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--blue);
-      flex-shrink: 0;
-      width: 70px;
-      text-align: center;
-    }
-    .fund-pct span { display: block; font-size: 0.65rem; color: var(--gray); font-family: var(--font-main); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
-    .fund-title { font-weight: 700; color: var(--blue); margin-bottom: 0.2rem; }
-    .fund-desc { font-size: 0.84rem; color: var(--gray); }
-
-    .testimonial {
-      background: var(--blue);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      color: var(--white);
-      position: relative;
-    }
-    .testimonial::before {
-      content: '"';
-      font-family: Georgia, serif;
-      font-size: 6rem;
-      color: var(--maize);
-      position: absolute;
-      top: -1rem;
-      left: 2rem;
-      line-height: 1;
-      opacity: 0.6;
-    }
-    .testimonial-text {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.85);
-      font-style: italic;
-      margin-bottom: 1.25rem;
-    }
-    .testimonial-author { font-weight: 700; color: var(--maize); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.08em; }
-
-    @media (max-width: 900px) {
-      .donate-layout { grid-template-columns: 1fr; }
-      .form-card { position: static; }
-    }
-    @media (max-width: 560px) {
-      .two-col { grid-template-columns: 1fr; }
-      .amount-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
 </head>
 <body>
 
@@ -274,6 +23,7 @@
     <li><a href="history.html">History</a></li>
     <li><a href="facilities.html">Facilities</a></li>
     <li><a href="join.html">Join Us</a></li>
+    <li><a href="store.html">Store</a></li>
     <li><a href="donate.html" class="nav-cta active">Donate</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Toggle menu">
@@ -294,241 +44,46 @@
 
 <div class="page">
 
-  <!-- ── PAGE HERO ── -->
-  <div class="page-hero">
-    <div class="page-hero-content">
+  <!-- ── HERO ── -->
+  <div style="background:linear-gradient(135deg,var(--dark) 0%,var(--blue) 100%);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,203,5,0.03) 0,rgba(255,203,5,0.03) 1px,transparent 0,transparent 50%);background-size:40px 40px;"></div>
+    <div style="position:relative;z-index:1;">
       <div class="section-label text-maize" style="margin-bottom:0.75rem;">Support the Team · Go Blue!</div>
-      <h1>Power <span>Michigan Squash</span></h1>
-      <p>Your donation directly funds travel, equipment, court time, and the programs that make us competitive nationally.</p>
-    </div>
-  </div>
-
-  <!-- ── IMPACT BAR ── -->
-  <div class="impact-bar">
-    <div class="impact-inner">
-      <div class="impact-item">
-        <div class="impact-num"><!-- $XX,XXX --></div>
-        <div class="impact-label">Raised This Year</div>
-      </div>
-      <div class="impact-item">
-        <div class="impact-num"><!-- XX --></div>
-        <div class="impact-label">Donors</div>
-      </div>
-      <div class="impact-item">
-        <div class="impact-num"><!-- XX --></div>
-        <div class="impact-label">Players Supported</div>
+      <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,7vw,5rem);color:var(--white);letter-spacing:0.04em;line-height:1;">Support <span style="color:var(--maize);">Michigan Squash</span></h1>
+      <p style="color:rgba(255,255,255,0.65);font-size:1.05rem;margin-top:1rem;max-width:540px;margin-left:auto;margin-right:auto;">Without our donors, none of this would be possible. Your support directly funds travel, equipment, and everything that keeps us competitive nationally.</p>
+      <div style="margin-top:2rem;">
+        <a href="#DONATE-LINK-HERE" class="btn btn-primary" style="font-size:1rem;padding:0.9rem 2.5rem;">Donate Now →</a>
       </div>
     </div>
   </div>
 
-  <!-- ── GIVING TIERS ── -->
+  <!-- ── DONOR WALL ── -->
   <section>
-    <div class="container">
-      <div class="section-header center">
-        <div class="section-label">Ways to Give</div>
-        <h2 class="section-title">Giving Levels</h2>
-        <p class="section-subtitle">Every dollar goes directly to the team. Choose the level that works for you.</p>
-      </div>
-
-      <div class="grid-4">
-        <div class="tier-card">
-          <div class="tier-amount">$25</div>
-          <div class="tier-name">Supporter</div>
-          <div class="tier-desc">Covers the cost of a can of match balls — the most basic, essential piece of equipment.</div>
-          <ul class="tier-perks">
-            <li>Our sincere thanks</li>
-            <li>Name on website</li>
-          </ul>
-          <a href="#donate-form" class="btn btn-blue" style="justify-content:center;">Give $25</a>
-        </div>
-
-        <div class="tier-card">
-          <div class="tier-amount">$100</div>
-          <div class="tier-name">Booster</div>
-          <div class="tier-desc">Helps offset travel costs for one player to attend an away match or regional tournament.</div>
-          <ul class="tier-perks">
-            <li>Name on website</li>
-            <li>Season recap email</li>
-          </ul>
-          <a href="#donate-form" class="btn btn-blue" style="justify-content:center;">Give $100</a>
-        </div>
-
-        <div class="tier-card featured">
-          <div class="tier-amount">$500</div>
-          <div class="tier-name">Champion</div>
-          <div class="tier-desc">Funds a full travel scholarship for one player to compete at a national tournament — a transformative experience.</div>
-          <ul class="tier-perks">
-            <li>Prominent website credit</li>
-            <li>Season recap + photos</li>
-            <li>Personal thank-you call</li>
-          </ul>
-          <a href="#donate-form" class="btn btn-primary" style="justify-content:center;">Give $500</a>
-        </div>
-
-        <div class="tier-card">
-          <div class="tier-amount">$1K+</div>
-          <div class="tier-name">Cornerstone</div>
-          <div class="tier-desc">A transformational gift that funds court time, equipment, and programming for an entire semester.</div>
-          <ul class="tier-perks">
-            <li>Named sponsor recognition</li>
-            <li>All Champion perks</li>
-            <li>Invitation to home matches</li>
-          </ul>
-          <a href="#donate-form" class="btn btn-blue" style="justify-content:center;">Contact Us</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── USE OF FUNDS + FORM ── -->
-  <section id="donate-form" style="background: var(--off-white);">
-    <div class="container">
-      <div class="donate-layout">
-
-        <!-- Left: where money goes + testimonial -->
-        <div>
-          <div class="section-header">
-            <div class="section-label">Transparency</div>
-            <h2 class="section-title">Where Your Money Goes</h2>
-          </div>
-
-          <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem;">
-            <div class="fund-item">
-              <div class="fund-pct"><!-- % --><span>of funds</span></div>
-              <div>
-                <div class="fund-title">Travel &amp; Competition</div>
-                <div class="fund-desc">Transportation, lodging, and entry fees for away matches and national tournaments.</div>
-              </div>
-            </div>
-            <div class="fund-item">
-              <div class="fund-pct"><!-- % --><span>of funds</span></div>
-              <div>
-                <div class="fund-title">Court Time &amp; Facilities</div>
-                <div class="fund-desc">Weekly court rental at <!-- Facility --> for team practices and match play.</div>
-              </div>
-            </div>
-            <div class="fund-item">
-              <div class="fund-pct"><!-- % --><span>of funds</span></div>
-              <div>
-                <div class="fund-title">Equipment &amp; Gear</div>
-                <div class="fund-desc">Rackets, balls, strings, and team apparel to keep every player competition-ready.</div>
-              </div>
-            </div>
-            <div class="fund-item">
-              <div class="fund-pct"><!-- % --><span>of funds</span></div>
-              <div>
-                <div class="fund-title">Coaching &amp; Development</div>
-                <div class="fund-desc">Coaching fees, clinics, and development programs that raise the level of our whole team.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial -->
-          <div class="testimonial">
-            <div class="testimonial-text"><!-- Quote from a player or alumni about what donor support means to them. 2-3 sentences. --></div>
-            <div class="testimonial-author"><!-- Name, Class of XXXX --></div>
-          </div>
-        </div>
-
-        <!-- Right: donation form -->
-        <div class="form-card">
-          <h3>Make a Donation</h3>
-
-          <div class="form-group">
-            <label>Select Amount</label>
-            <div class="amount-grid">
-              <button type="button" class="amount-btn" onclick="selectAmount(this, '25')">$25</button>
-              <button type="button" class="amount-btn" onclick="selectAmount(this, '50')">$50</button>
-              <button type="button" class="amount-btn" onclick="selectAmount(this, '100')">$100</button>
-              <button type="button" class="amount-btn" onclick="selectAmount(this, '250')">$250</button>
-              <button type="button" class="amount-btn" onclick="selectAmount(this, '500')">$500</button>
-              <button type="button" class="amount-btn" onclick="selectAmount(this, 'other')">Other</button>
-            </div>
-          </div>
-
-          <form action="<!-- FORM ACTION / payment link -->" method="POST">
-            <div class="form-group" id="custom-amount-group" style="display:none;">
-              <label for="custom-amount">Custom Amount ($)</label>
-              <input type="number" id="custom-amount" name="custom_amount" placeholder="Enter amount" min="1" />
-            </div>
-            <input type="hidden" id="selected-amount" name="amount" />
-
-            <div class="two-col">
-              <div class="form-group">
-                <label for="d-first">First Name</label>
-                <input type="text" id="d-first" name="first_name" placeholder="Jane" required />
-              </div>
-              <div class="form-group">
-                <label for="d-last">Last Name</label>
-                <input type="text" id="d-last" name="last_name" placeholder="Doe" required />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="d-email">Email</label>
-              <input type="email" id="d-email" name="email" placeholder="jane@example.com" required />
-            </div>
-
-            <div class="form-group">
-              <label for="d-relation">Relation to Michigan Squash</label>
-              <select id="d-relation" name="relation">
-                <option value="" disabled selected>Select one</option>
-                <option>Alumni</option>
-                <option>Parent / Family</option>
-                <option>Friend / Fan</option>
-                <option>Current Member</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="d-message">Dedication / Message (optional)</label>
-              <textarea id="d-message" name="message" placeholder="In honor of... / Go Blue!" style="min-height: 80px;"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem; font-size: 1rem;">
-              Donate Now
-            </button>
-
-            <p style="font-size: 0.75rem; color: var(--gray); text-align: center; margin-top: 1rem;">
-              Michigan Club Squash is a registered student organization at the University of Michigan.
-              <!-- Add tax-deductibility note if applicable -->
-            </p>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── DONOR RECOGNITION ── -->
-  <section>
-    <div class="container" style="max-width: 900px;">
+    <div class="container" style="max-width:860px;">
       <div class="section-header center">
         <div class="section-label">With Gratitude</div>
         <h2 class="section-title">Thank You to All of Our Donors</h2>
-        <p class="section-subtitle">Your generosity keeps Michigan Club Squash competing at the highest level.</p>
       </div>
 
-      <!-- Champion tier -->
+      <!-- Champion -->
       <div style="background:var(--blue);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin-bottom:1.5rem;text-align:center;">
-        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--maize);margin-bottom:0.5rem;">Wolverine Champion · $5,000+</div>
-        <div style="font-family:var(--font-display);font-size:1.6rem;color:var(--white);letter-spacing:0.04em;">Jai Shekhawat</div>
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--maize);margin-bottom:0.6rem;">Wolverine Champion · $5,000+</div>
+        <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--white);letter-spacing:0.04em;">Jai Shekhawat</div>
       </div>
 
-      <!-- Inspired tier -->
+      <!-- Inspired -->
       <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin-bottom:1.5rem;">
         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem;text-align:center;">Wolverine Inspired · $2,500–$4,999</div>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem 2rem;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem 2.5rem;">
           <span style="font-size:0.97rem;color:var(--blue);font-weight:600;">Susan &amp; Mike Garver</span>
-          <span style="font-size:0.97rem;color:var(--blue);font-weight:600;display:flex;align-items:center;gap:0.6rem;"><img src="photos/motorcitysquash.png" alt="Motor City Squash" style="height:22px;vertical-align:middle;" onerror="this.style.display='none'" /> The Motor City Squash and Education Foundation</span>
+          <span style="font-size:0.97rem;color:var(--blue);font-weight:600;">The Motor City Squash and Education Foundation</span>
         </div>
       </div>
 
-      <!-- Proud tier -->
+      <!-- Proud -->
       <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:2rem 2.5rem;margin-bottom:1.5rem;">
         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem;text-align:center;">Wolverine Proud · $1,000–$2,499</div>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem 2rem;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.65rem 2.5rem;">
           <span style="font-size:0.93rem;color:var(--gray);">Gabriel Lependorf</span>
           <span style="font-size:0.93rem;color:var(--gray);">Andrew Alpert &amp; Maria Zimmitti</span>
           <span style="font-size:0.93rem;color:var(--gray);">Esther Alpert &amp; Oliver Cooper</span>
@@ -540,10 +95,10 @@
         </div>
       </div>
 
-      <!-- Supporter tier -->
+      <!-- Supporter -->
       <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:2rem 2.5rem;">
         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem;text-align:center;">Wolverine Supporter · $100–$999</div>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 2rem;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem 2.5rem;">
           <span style="font-size:0.9rem;color:var(--gray);">Richard Geglio</span>
           <span style="font-size:0.9rem;color:var(--gray);">John Dunwoody</span>
           <span style="font-size:0.9rem;color:var(--gray);">Jill &amp; Barry Waldman</span>
@@ -576,6 +131,8 @@
     <a href="index.html">Home</a>
     <a href="about.html">Team</a>
     <a href="schedule.html">Schedule</a>
+    <a href="history.html">History</a>
+    <a href="facilities.html">Facilities</a>
     <a href="join.html">Join Us</a>
     <a href="donate.html">Donate</a>
   </div>
@@ -584,20 +141,5 @@
 </footer>
 
 <script src="script.js"></script>
-<script>
-  function selectAmount(btn, val) {
-    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    const customGroup = document.getElementById('custom-amount-group');
-    const hiddenInput = document.getElementById('selected-amount');
-    if (val === 'other') {
-      customGroup.style.display = 'block';
-      hiddenInput.value = '';
-    } else {
-      customGroup.style.display = 'none';
-      hiddenInput.value = val;
-    }
-  }
-</script>
 </body>
 </html>
