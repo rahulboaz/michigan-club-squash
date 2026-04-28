@@ -613,11 +613,11 @@ footer {
 @media (max-width: 480px) {
   section { padding: 2.5rem 1rem; }
 
-  /* Stat bars — stack into 2×2 grid */
+  /* Stat bars — stack into 2×2 grid, no dividers */
   .photo-hero-stats { gap: 0; }
-  .photo-hero-stat { width: 50%; padding: 0.75rem 0.5rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
-  .photo-hero-stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
-  .photo-hero-stat:nth-last-child(-n+2) { border-bottom: none; }
+  .photo-hero-stat,
+  .photo-hero-stat:nth-child(odd),
+  .photo-hero-stat:last-child { width: 50%; padding: 0.75rem 0.5rem; border: none; }
 
   /* Grids */
   .grid-3, .grid-4, .grid-2 { grid-template-columns: 1fr; }
