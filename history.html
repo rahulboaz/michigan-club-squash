@@ -163,6 +163,21 @@
     }
 
     .season-empty { /* placeholder side */ }
+    .season-photo {
+      margin: 0 1.5rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 4/3;
+    }
+    .season-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .season-photo { display: none; }
+    }
 
     /* Founding banner */
     .founding-banner {
@@ -267,12 +282,12 @@
             </div>
           </div>
           <div class="season-dot-col"><div class="season-dot">25–26</div></div>
-          <div class="season-empty"></div>
+          <div class="season-photo"><img src="photos/teamphoto2026.jpg" alt="2025-26 Team" /></div>
         </div>
 
         <!-- 2024–2025 -->
         <div class="season-block">
-          <div class="season-empty"></div>
+          <div class="season-photo"><img src="photos/teamphoto2025.jpg" alt="2024-25 Team" /></div>
           <div class="season-dot-col"><div class="season-dot">24–25</div></div>
           <div class="season-card">
             <div class="season-header">
@@ -315,12 +330,12 @@
             </div>
           </div>
           <div class="season-dot-col"><div class="season-dot">23–24</div></div>
-          <div class="season-empty"></div>
+          <div class="season-photo"><img src="photos/teamphoto2024.jpg" alt="2023-24 Team" /></div>
         </div>
 
         <!-- 2022–2023 -->
         <div class="season-block">
-          <div class="season-empty"></div>
+          <div class="season-photo"><img src="photos/teamphoto2023.jpg" alt="2022-23 Team" /></div>
           <div class="season-dot-col"><div class="season-dot">22–23</div></div>
           <div class="season-card">
             <div class="season-header">
@@ -362,7 +377,7 @@
             </div>
           </div>
           <div class="season-dot-col"><div class="season-dot">21–22</div></div>
-          <div class="season-empty"></div>
+          <div class="season-photo"><img src="photos/teamphoto2022.jpg" alt="2021-22 Team" /></div>
         </div>
 
         <!-- 2020–2021 -->
@@ -402,12 +417,12 @@
             </div>
           </div>
           <div class="season-dot-col"><div class="season-dot">19–20</div></div>
-          <div class="season-empty"></div>
+          <div class="season-photo"><img src="photos/teamphoto2020.jpg" alt="2019-20 Team" /></div>
         </div>
 
         <!-- 2018–2019 (Founding Season) -->
         <div class="season-block">
-          <div class="season-empty"></div>
+          <div class="season-photo"><img src="photos/teamphoto2019.jpg" alt="2018-19 Team" /></div>
           <div class="season-dot-col"><div class="season-dot">18–19</div></div>
           <div class="season-card">
             <div class="season-header">
