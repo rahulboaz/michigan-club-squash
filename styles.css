@@ -605,9 +605,9 @@ footer {
   /* Section headers */
   .section-header { margin-bottom: 2rem; }
 
-  /* Leadership cards — taller photo, face anchored to top */
+  /* Leadership cards — square photo, face anchored to top */
   .leadership-card { flex-direction: column; }
-  .leadership-photo { width: 100%; height: 220px; }
+  .leadership-photo { width: 100%; aspect-ratio: 1 / 1; height: auto; }
   .leadership-photo img { object-position: top center; }
 }
 
