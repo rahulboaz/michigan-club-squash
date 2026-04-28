@@ -9,80 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .page-hero {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%);
-      padding: 5rem 2rem 4rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(45deg, rgba(255,203,5,0.03) 0, rgba(255,203,5,0.03) 1px, transparent 0, transparent 50%);
-      background-size: 40px 40px;
-    }
-    .page-hero-content { position: relative; z-index: 1; }
-    .page-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      color: var(--white);
-      letter-spacing: 0.04em;
-      line-height: 1;
-    }
-    .page-hero h1 span { color: var(--maize); }
-    .page-hero p {
-      color: rgba(255,255,255,0.65);
-      font-size: 1.05rem;
-      margin-top: 1rem;
-      max-width: 500px;
-      margin-left: auto; margin-right: auto;
-    }
-
-    /* Facility hero card */
-    .facility-hero {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      margin-bottom: 3rem;
-    }
-    .facility-hero-img {
-      width: 100%;
-      height: 380px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-mid));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      color: rgba(255,203,5,0.25);
-      letter-spacing: 0.1em;
-      overflow: hidden;
-    }
-    .facility-hero-img img { width: 100%; height: 100%; object-fit: cover; }
-    .facility-hero-body {
-      padding: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 2.5rem;
-      align-items: start;
-    }
-    .facility-name {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      color: var(--blue);
-      letter-spacing: 0.04em;
-      line-height: 1.1;
-      margin-bottom: 0.75rem;
-    }
-    .facility-desc { font-size: 0.95rem; color: var(--gray); line-height: 1.7; }
-
-    .facility-details {
-      background: var(--off-white);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-    }
     .detail-row {
       display: flex;
       align-items: flex-start;
@@ -103,33 +29,6 @@
     }
     .detail-value { color: var(--gray); line-height: 1.5; }
 
-    /* Court feature cards */
-    .court-feature {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      border-left: 4px solid var(--maize);
-    }
-    .court-feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .court-feature-icon {
-      width: 48px; height: 48px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-light));
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1rem;
-    }
-    .court-feature-icon svg { width: 24px; height: 24px; fill: var(--maize); }
-    .court-feature h3 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      color: var(--blue);
-      letter-spacing: 0.04em;
-      margin-bottom: 0.4rem;
-    }
-    .court-feature p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
-
     /* Photo grid */
     .photo-grid {
       display: grid;
@@ -141,58 +40,11 @@
       overflow: hidden;
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, var(--blue-mid), var(--blue));
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: rgba(255,203,5,0.25);
-      letter-spacing: 0.1em;
     }
-    .photo-cell img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-cell.tall { grid-row: span 2; aspect-ratio: unset; }
 
-    /* Map / directions */
-    .directions-card {
-      background: var(--blue);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      color: var(--white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-    .directions-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-    .directions-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .directions-list li {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.75);
-      display: flex; gap: 0.6rem; align-items: flex-start;
-    }
-    .directions-list li::before {
-      content: '→';
-      color: var(--maize);
-      flex-shrink: 0;
-    }
-    .map-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.3);
-      font-size: 0.85rem;
-      border: 1px dashed rgba(255,255,255,0.2);
-    }
-
     @media (max-width: 768px) {
-      .facility-hero-body { grid-template-columns: 1fr; }
-      .directions-card { grid-template-columns: 1fr; }
       .photo-grid { grid-template-columns: repeat(2, 1fr); }
       .photo-cell.tall { grid-row: span 1; aspect-ratio: 4/3; }
     }
@@ -236,127 +88,62 @@
 
 <div class="page">
 
-  <div class="page-hero">
-    <div class="page-hero-content">
+  <!-- ── HERO BANNER ── -->
+  <div style="position:relative;width:100%;height:480px;overflow:hidden;">
+    <img src="photos/hadley.png" alt="Hadley Recreation Center" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.6);" />
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;">
       <div class="section-label text-maize" style="margin-bottom:0.75rem;">Where We Train · Go Blue!</div>
-      <h1>Our <span>Facilities</span></h1>
-      <p>World-class courts at the University of Michigan — built for serious competition.</p>
+      <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,7vw,5rem);color:#fff;letter-spacing:0.04em;line-height:1;">The Hadley <span style="color:var(--maize);">Rec Center</span></h1>
+      <p style="color:rgba(255,255,255,0.7);margin-top:0.75rem;font-size:1.05rem;">1402 Washington Heights · Ann Arbor, MI</p>
     </div>
   </div>
 
-  <!-- ── MAIN FACILITY ── -->
+  <!-- ── ABOUT THE FACILITY ── -->
   <section>
-    <div class="container">
-
-      <div class="facility-hero">
-        <div class="facility-hero-img">
-          <img src="photos/court1.jpeg" alt="Hadley Recreation Center Squash Courts" />
+    <div class="container" style="max-width:900px;">
+      <div style="display:grid;grid-template-columns:1fr 260px;gap:3rem;align-items:start;">
+        <div>
+          <div class="section-label" style="margin-bottom:0.75rem;">Our Home</div>
+          <h2 style="font-family:var(--font-display);font-size:2.2rem;color:var(--blue);letter-spacing:0.04em;margin-bottom:1rem;">The Hadley Recreation Center</h2>
+          <p style="font-size:1rem;color:var(--gray);line-height:1.8;margin-bottom:1rem;">Michigan Club Squash trains and competes at the brand new Hadley Recreation Center on the University of Michigan campus. Home to 2 state-of-the-art glass-back squash courts, the Hadley Center is one of the premier squash facilities in the Big Ten.</p>
+          <p style="font-size:1rem;color:var(--gray);line-height:1.8;">The facility serves as the team's full gym — members have access to the entire Hadley Center for training, conditioning, and recovery.</p>
         </div>
-        <div class="facility-hero-body">
-          <div>
-            <div class="section-label">Primary Venue</div>
-            <div class="facility-name">The Hadley<br>Recreation Center</div>
-            <p class="facility-desc">Michigan Club Squash trains and competes at the brand new Hadley Recreation Center on the University of Michigan campus. Home to 2 state-of-the-art glass-back squash courts, the Hadley Center is one of the premier squash facilities in the Big Ten. The facility serves as the team's full gym — members have access to the entire Hadley Center for training, conditioning, and recovery.</p>
-          </div>
-          <div class="facility-details">
-            <div class="detail-row">
-              <div class="detail-label">Location</div>
-              <div class="detail-value">The Hadley Recreation Center, University of Michigan</div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-label">Courts</div>
-              <div class="detail-value">2 brand new singles courts with glass back walls</div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-label">Surface</div>
-              <div class="detail-value">Hardwood · WSF regulation</div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-label">Practice</div>
-              <div class="detail-value"><!-- e.g. Mon/Wed/Fri 6–8pm --></div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-label">Gym Access</div>
-              <div class="detail-value">Full Hadley Center access for all team members</div>
-            </div>
-          </div>
+        <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:1.5rem;">
+          <div class="detail-row"><div class="detail-label">Courts</div><div class="detail-value">2 singles courts with glass back walls</div></div>
+          <div class="detail-row"><div class="detail-label">Surface</div><div class="detail-value">Hardwood · WSF regulation</div></div>
+          <div class="detail-row"><div class="detail-label">Gym</div><div class="detail-value">Full Hadley Center access for all members</div></div>
+          <div class="detail-row" style="border-bottom:none;"><div class="detail-label">Address</div><div class="detail-value">1402 Washington Heights, Ann Arbor, MI 48109</div></div>
         </div>
       </div>
-
-      <!-- Court features -->
-      <div class="section-header center">
-        <div class="section-label">Amenities</div>
-        <h2 class="section-title">What We Have</h2>
-      </div>
-
-      <div class="grid-3">
-        <div class="court-feature">
-          <div class="court-feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-          </div>
-          <h3>Regulation Courts</h3>
-          <p><!-- e.g. X full-size singles courts meeting WSF specifications for competition play. --></p>
-        </div>
-
-        <div class="court-feature">
-          <div class="court-feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.53 16.5 1 14.67 1c-1.16 0-2.15.58-2.77 1.45-.04.06-.08.13-.12.19-.04-.06-.08-.13-.12-.19C11.02 1.58 10.03 1 8.87 1 7.03 1 5.53 2.53 5.53 4.67c0 .46.11.9.18 1.33H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg>
-          </div>
-          <h3>Locker Rooms</h3>
-          <p><!-- e.g. Full locker room facilities with showers available to Michigan Club Squash members. --></p>
-        </div>
-
-        <div class="court-feature">
-          <div class="court-feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-          </div>
-          <h3>Equipment Storage</h3>
-          <p><!-- e.g. Dedicated storage space for club equipment including rackets, balls, and training aids. --></p>
-        </div>
-      </div>
-
-      <!-- Photo gallery -->
-      <div class="section-header" style="margin-top: 4rem;">
-        <div class="section-label">Gallery</div>
-        <h2 class="section-title">Photos</h2>
-      </div>
-
-      <div class="photo-grid">
-        <div class="photo-cell tall"><img src="photos/court1.jpeg" alt="Hadley Center Courts" /></div>
-        <div class="photo-cell"><img src="photos/court2.jpeg" alt="Hadley Center Courts" /></div>
-        <div class="photo-cell"><!-- <img src="photos/court3.jpg" alt="Court" /> Add more photos here --></div>
-      </div>
-
     </div>
   </section>
 
-  <!-- ── DIRECTIONS ── -->
-  <section style="background: var(--off-white);">
+  <!-- ── PHOTO GALLERY ── -->
+  <section style="background:var(--off-white);padding-top:0;">
+    <div class="container">
+      <div class="photo-grid">
+        <div class="photo-cell tall"><img src="photos/hadley.png" alt="Hadley Recreation Center" /></div>
+        <div class="photo-cell"><img src="photos/court1.jpeg" alt="Squash Court" /></div>
+        <div class="photo-cell"><img src="photos/court2.jpeg" alt="Squash Court" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAP ── -->
+  <section>
     <div class="container">
       <div class="section-header center">
         <div class="section-label">Getting Here</div>
-        <h2 class="section-title">Directions</h2>
+        <h2 class="section-title">Find Us</h2>
       </div>
-
-      <div class="directions-card">
-        <div>
-          <h3>How to Find Us</h3>
-          <ul class="directions-list">
-            <li><!-- Direction 1 e.g. "From Central Campus, head north on State St." --></li>
-            <li><!-- Direction 2 --></li>
-            <li><!-- Direction 3 --></li>
-            <li><!-- Parking info e.g. "Free parking available in Lot X after 5pm" --></li>
-          </ul>
-          <div style="margin-top: 1.5rem;">
-            <a href="<!-- Google Maps link -->" target="_blank" class="btn btn-primary">Open in Google Maps</a>
-          </div>
-        </div>
-        <div class="map-placeholder">
-          <!-- Replace with Google Maps embed:
-          <iframe src="https://www.google.com/maps/embed?..." width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
-          -->
-          Add Google Maps embed here
-        </div>
+      <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);height:420px;">
+        <iframe
+          src="https://maps.google.com/maps?q=Hadley+Recreation+Center+1402+Washington+Heights+Ann+Arbor+MI+48109&output=embed"
+          width="100%" height="100%" style="border:0;display:block;" allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+      <div style="text-align:center;margin-top:1.5rem;">
+        <a href="https://maps.google.com/maps?q=Hadley+Recreation+Center+1402+Washington+Heights+Ann+Arbor+MI+48109" target="_blank" class="btn btn-primary">Open in Google Maps</a>
       </div>
     </div>
   </section>
